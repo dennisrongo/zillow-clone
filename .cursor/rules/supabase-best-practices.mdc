@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+- Use Supabase's real-time capabilities for live updates
+- Implement proper error handling for database operations
+- Utilize Supabase's authentication system for user management
+- Optimize queries with Supabase's built-in filtering and sorting options

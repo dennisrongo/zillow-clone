@@ -20,7 +20,28 @@
 }
 
 body {
-  background: var(--background);
+  /* Remove background property to let Tailwind utility control it */
+  /* background: var(--background); */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these styles to hide the scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Optional: Add basic body styling if needed */
+/* body {
+  @apply bg-white text-gray-900;
+} */

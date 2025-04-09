@@ -1,0 +1,48 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Ensure that database interactions, such as those with Supabase or external/internal APIs, are handled through the 'services' layer. - 
+- All client-side calls should be routed through the API routes. All API calls such as fetch should be handled in the services. Avoid making HTTP calls from the client-side. 
+- Promote code sharing between client and API code to prevent duplication by reusing existing code. Avoid adding extra commentary in your response.
+- If the pages are sharing the same layout, store them within a directory with parenthesis to group them together. For example, the auth pages will use a unique layout vs being logged in. Name the directory however you see best fit the group of pages within it. Folder directories with parenthesis is not part of the route and ignored by Next.JS. They're there for organization purposes only, so don't get confused.
+- The parent folder with parenthesis is only meant for organization and doesn't reflect the route. For example (budget)/funds/page.tsx should be routed to /funds
+- Do not make any changes to the UI unless instructed. Focus solely on what's being asked.
+
+project-root/  
+├── app/  
+│   ├── layout.tsx         # Global layout wrapper  
+│   ├── page.tsx           # Root route handler  
+│   ├── (auth)/            # Route group for authentication  
+│   │   ├── login/         # /auth/login route  
+│   │   └── register/      # /auth/register route  
+│   ├── api/               # Dedicated API route handlers  
+parentheses)
+│   │   ├── admin/         # /dashboard/admin route
+│   │   │   ├── _components/    # Admin-specific components
+│   │   │   ├── _contexts/      # Admin-specific contexts
+│   │   │   ├── _hooks/         # Admin-specific hooks
+│   │   │   ├── _types/         # Admin-specific types
+│   │   │   ├── page.tsx        # Admin page
+│   │   │   └── layout.tsx      # Admin-specific layout
+│   │   └── billing/            # /dashboard/billing route
+│   │       ├── _components/    # Billing-specific components
+│   │       ├── _hooks/         # Billing-specific hooks
+│   │       └── page.tsx        # Billing page
+│   └── blog/              # Content-focused routes  
+│       ├── layout.tsx     # Blog-specific layout  
+│       └── [slug]/        # Dynamic blog post route (/blog/:slug)  
+├── components/           # Reusable UI components  
+├── lib/                  # Core logic and utilities
+│   ├── src/               # Core abstracted logic (domain layer)
+│   │   ├── services/       # Enterprise service layer implementation
+│   │   │   ├── core/       # Shared services across domains
+│   │   │   │   └── http.ts # Abstract HTTP service
+│   │   │   ├── auth/       # Authentication/Identity domain
+│   │   │   │   ├── types.ts
+│   │   │   │   └── service.ts
+│   │   │   └── data/       # Data fetching/CRUD operations
+│   │   └── infrastructure/
+│   │       └── adapters/
+│   └── utils/             # Existing pure utilities

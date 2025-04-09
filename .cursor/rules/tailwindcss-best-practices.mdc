@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Use utility-first approach for consistent and maintainable styles
+- Create custom components with `@apply` directive for reusability
+- Utilize responsive design utilities for mobile-first development
+- Optimize build time by using JIT mode and purging unused styles
