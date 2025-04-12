@@ -11,8 +11,15 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'images.pexels.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
     },
+    // Remove the devServer configuration block as it's not valid here
 };
 
-export default nextConfig; 
+export default nextConfig;
